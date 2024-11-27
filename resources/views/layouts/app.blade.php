@@ -21,9 +21,15 @@
         <livewire:layout.navigation />
 
         <!-- Page Content -->
-        <main class="grow flex flex-col gap-8">
+        <main class="grow flex flex-col items-center gap-8 px-16 py-8">
             {{ $slot }}
         </main>
+
+        <footer class="border-t py-4">
+            <div class="text-center text-sm">
+                &copy; {{ date('Y') }} DevNotes.
+            </div>
+        </footer>
     </div>
 </body>
 

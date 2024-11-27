@@ -1,3 +1,3 @@
 <x-app-layout>
-    <div>Home Page</div>
+    <div>My posts</div>
 </x-app-layout>
