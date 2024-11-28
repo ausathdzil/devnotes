@@ -16,6 +16,9 @@ Route::get('posts/new', [PostController::class, 'new'])
     ->middleware(['auth'])
     ->name('posts.new');
 
+Route::get('posts/{post}', [PostController::class, 'show'])
+    ->name('posts.show');
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');

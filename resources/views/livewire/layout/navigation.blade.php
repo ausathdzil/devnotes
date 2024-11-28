@@ -17,7 +17,7 @@ new class extends Component {
 
 <header class="px-16 py-4 border-b">
     <nav class="flex items-center text-sm">
-        <a class="font-serif font-bold text-2xl" href="{{ route('home') }}">
+        <a class="font-serif font-bold text-2xl text-secondary" href="{{ route('home') }}">
             {{ __('DevNotes') }}
         </a>
         @auth
