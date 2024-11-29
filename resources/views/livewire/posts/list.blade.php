@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Volt\Component;
+use Illuminate\Support\Str;
 
 new class extends Component {
     #[Url(history: true)]
@@ -29,7 +30,13 @@ new class extends Component {
                     });
             });
         });
-        $this->posts = $query->latest()->get();
+        $this->posts = $query->latest()->take(4)->get();
+    }
+
+    public function calculateReadTime(Post $post): int
+    {
+        $wordCount = str_word_count(strip_tags(Str::markdown($post->content)));
+        return max(1, ceil($wordCount / 225)); // Minimum 1 minute
     }
 
     public function updatedSearch(): void
@@ -50,18 +57,26 @@ new class extends Component {
                 <article class="space-y-2 text-muted">
                     <a href="{{ route('posts.show', ['post' => $post->id]) }}"
                         class="font-bold text-2xl text-black">{{ $post->title }}</a>
-                    {!! Str::markdown(
-                        collect(explode("\n", $post->content))->filter(fn($line) => Str::startsWith($line, '#') === false)->first(fn($line) => trim($line) !== ''),
-                    ) !!}
-                    @if (str_word_count(strip_tags(Str::markdown($post->content))) > 25)
-                        {{ __('...') }}
-                        <a href="{{ route('posts.show', ['post' => $post->id]) }}"
-                            class="font-bold text-accent">{{ __('Read more') }}</a>
+
+                    @php
+                        $content = strip_tags(Str::markdown($post->content));
+                        $words = str_word_count($content, 2);
+                        $snippet = implode(' ', array_slice($words, 0, 25));
+                    @endphp
+
+                    @if (count($words) > 25)
+                        <p>{!! $snippet !!}...<a href="{{ route('posts.show', ['post' => $post->id]) }}"
+                                class="font-bold text-accent">{{ __('read more') }}</a></p>
+                    @else
+                        <p>{!! $content !!}</p>
                     @endif
-                    <p class="text-black"> {{ __('By') }} {{ $post->user->name }}</p>
+
+                    <p class="text-black">{{ __('By') }} {{ $post->user->name }}</p>
                 </article>
-                <div class="text-accent">
-                    <span>{{ $post->created_at->format('j M Y') }}</span>
+                <div class="flex items-center gap-2">
+                    <p class="text-accent">{{ $post->created_at->format('j M Y') }}</p>
+                    <span>&bull;</span>
+                    <p class="text-muted">{{ $this->calculateReadTime($post) }} min read</p>
                 </div>
             </li>
         @endforeach

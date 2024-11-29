@@ -49,7 +49,7 @@ new class extends Component {
                 <p>Posts: {{ Auth::user()->posts()->count() }}</p>
                 <p>Joined: {{ Auth::user()->created_at->format('M d, Y') }}</p>
                 <a href="{{ route('profile.settings') }}"
-                    class="inline-block mt-4 bg-primary text-secondary border border-secondary px-4 py-2 rounded-lg hover:bg-secondary hover:text-primary transition-colors">
+                    class="inline-block mt-4 bg-white text-secondary border border-secondary px-4 py-2 rounded-lg hover:bg-secondary hover:text-primary transition-colors">
                     Edit Profile
                 </a>
             </div>
@@ -69,16 +69,22 @@ new class extends Component {
                 <article class="space-y-2 text-muted">
                     <a href="{{ route('posts.show', ['post' => $post->id]) }}"
                         class="font-bold text-2xl text-black">{{ $post->title }}</a>
-                    {!! Str::markdown(
-                        collect(explode("\n", $post->content))->filter(fn($line) => Str::startsWith($line, '#') === false)->first(fn($line) => trim($line) !== ''),
-                    ) !!}
-                    @if (str_word_count(strip_tags(Str::markdown($post->content))) > 25)
-                        {{ __('...') }}
-                        <a href="{{ route('posts.show', ['post' => $post->id]) }}"
-                            class="font-bold text-accent">{{ __('Read more') }}</a>
+
+                    @php
+                        $content = strip_tags(Str::markdown($post->content));
+                        $words = str_word_count($content, 2);
+                        $snippet = implode(' ', array_slice($words, 0, 25));
+                    @endphp
+
+                    @if (count($words) > 25)
+                        <p>{!! $snippet !!}...<a href="{{ route('posts.show', ['post' => $post->id]) }}"
+                                class="font-bold text-accent">{{ __('read more') }}</a></p>
+                    @else
+                        <p>{!! $content !!}</p>
                     @endif
+                    
+                    <p class="text-accent">{{ $post->created_at->format('j M Y') }}</p>
                 </article>
-                <p class="text-accent">{{ $post->created_at->format('j M Y') }}</p>
             </li>
         @endforeach
     </ul>
