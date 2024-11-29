@@ -8,13 +8,9 @@ Route::view('/', 'welcome');
 Route::get('home', [PostController::class, 'index'])
     ->name('home');
 
-Route::get('posts', [PostController::class, 'posts'])
+Route::get('posts/create', [PostController::class, 'create'])
     ->middleware(['auth'])
-    ->name('posts');
-
-Route::get('posts/new', [PostController::class, 'new'])
-    ->middleware(['auth'])
-    ->name('posts.new');
+    ->name('posts.create');
 
 Route::get('posts/{post}', [PostController::class, 'show'])
     ->name('posts.show');

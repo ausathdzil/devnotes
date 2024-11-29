@@ -13,16 +13,9 @@ class PostController extends Controller
         ]);
     }
 
-    public function posts(): View
+    public function create(): View
     {
-        return view('posts/index', [
-            //
-        ]);
-    }
-
-    public function new(): View
-    {
-        return view('posts/new', [
+        return view('posts/create', [
             //
         ]);
     }

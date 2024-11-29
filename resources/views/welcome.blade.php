@@ -19,19 +19,19 @@
     <div class="flex flex-col h-screen">
         <header class="flex items-center px-16 py-4 border-b">
             <a class="font-serif font-bold text-2xl" href="/">
-                DevNotes
+                {{ __('DevNotes') }}
             </a>
             <nav class="grow text-right text-sm space-x-8">
-                <a class="hover:underline underline-offset-2" href="{{ route('home') }}">Home</a>
+                <a class="hover:underline underline-offset-2" href="{{ route('home') }}">{{ __('Home') }}</a>
                 @auth
                     <a class="bg-secondary text-primary px-5 py-3 rounded-lg hover:bg-secondary/95 transition-colors"
                         href="{{ route('profile') }}">
-                        Profile
+                        {{ __('Profile') }}
                     </a>
                 @else
                     <a class="bg-secondary text-primary px-5 py-3 rounded-lg hover:bg-secondary/95 transition-colors"
                         href="{{ route('login') }}">
-                        Get Started
+                        {{ __('Get Started') }}
                     </a>
                 @endauth
             </nav>
@@ -40,18 +40,19 @@
         <main class="grow px-16 py-8 flex items-center justify-between gap-16">
             <div class="flex flex-col gap-4">
                 <article class="space-y-4 text-xl">
-                    <p class="font-bold">Welcome to DevNotes</p>
-                    <h1 class="font-serif font-bold text-6xl text-accent">Empowering Creativity & Effortless Publishing
+                    <p class="font-bold">{{ __('Welcome to DevNotes') }}</p>
+                    <h1 class="font-serif font-bold text-6xl text-accent">
+                        {{ __('Empowering Creativity & Effortless Publishing') }}
                     </h1>
                     <p>
-                        We are here to provide space for every writer, creator, and creative thinker to express
-                        themselves
-                        and share inspiration with the world.
+                        {{ __('We are here to provide space for every writer, creator, and creative thinker to express
+                                                                        themselves
+                                                                        and share inspiration with the world.') }}
                     </p>
                 </article>
                 <a class="w-fit bg-secondary text-primary px-5 py-3 rounded-lg hover:bg-secondary/95 transition-colors"
                     href="{{ route('home') }}">
-                    Start Reading
+                    {{ __('Start Reading') }}
                 </a>
             </div>
             <img class="rounded-lg" src="/hero.jpg" alt="hero image" width="650px" height="400px">
@@ -59,7 +60,7 @@
 
         <footer class="border-t py-4">
             <div class="text-center text-sm">
-                &copy; {{ date('Y') }} DevNotes.
+                &copy; {{ date('Y') }} {{ __('DevNotes') }}. {{ __('All rights reserved.') }}
             </div>
         </footer>
     </div>
