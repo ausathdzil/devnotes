@@ -41,6 +41,15 @@ new class extends Component {
     {
         $this->editing = null;
     }
+
+    public function delete(Post $post)
+    {
+        $this->authorize('delete', $post);
+
+        $post->delete();
+
+        return redirect()->route('home');
+    }
 }; ?>
 
 <div class="space-y-8 p-4 w-1/2">
@@ -55,6 +64,9 @@ new class extends Component {
                 <span>&bull;</span>
                 <p class="text-muted">{{ $readTime }} min read</p>
             </div>
+            @unless ($post->created_at->eq($post->updated_at))
+                <p class="text-muted">Last updated {{ $post->updated_at->format('j M Y') }}.</p>
+            @endunless
             @if ($post->user->is(auth()->user()))
                 <button wire:click="edit({{ $post->id }})"
                     class="flex items-center gap-2 px-3 py-2 hover:bg-tertiary rounded-lg transition-colors">
@@ -70,8 +82,9 @@ new class extends Component {
         <article class="prose">
             {!! Str::of($post->content)->markdown() !!}
         </article>
-        @unless ($post->created_at->eq($post->updated_at))
-            <p class="text-muted">Last updated {{ $post->updated_at->format('j M Y') }}.</p>
-        @endunless
+
+        @if ($post->user->is(auth()->user()))
+            <x-danger-button wire:click="delete({{ $post->id }})">Delete Post</x-danger-button>
+        @endif
     @endif
 </div>
