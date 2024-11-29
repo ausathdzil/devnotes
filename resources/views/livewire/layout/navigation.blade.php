@@ -19,10 +19,9 @@ new class extends Component {
     <a class="font-serif font-bold text-2xl" href="{{ route('home') }}"">
         {{ __('DevNotes') }}
     </a>
-    <nav class="grow text-right text-sm
-        space-x-8">
+    <nav class="grow text-sm flex items-center justify-end gap-8">
         @auth
-            <a class="hover:underline underline-offset-2 flex items-center gap-2" href="{{ route('posts.new') }}">
+            <a class="hover:underline underline-offset-2 flex items-center gap-2" href="{{ route('posts.create') }}">
                 <span>{{ __('New Post') }}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" width="16"
                     height="16" stroke="currentColor" class="text-secondary">
@@ -31,7 +30,7 @@ new class extends Component {
                 </svg>
             </a>
 
-            <x-dropdown align="right" width="48">
+            <x-dropdown align="right">
                 <x-slot name="trigger">
                     <button
                         class="inline-flex items-center px-3 py-1 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
