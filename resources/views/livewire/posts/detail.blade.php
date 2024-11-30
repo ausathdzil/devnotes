@@ -86,5 +86,11 @@ new class extends Component {
         @if ($post->user->is(auth()->user()))
             <x-danger-button wire:click="delete({{ $post->id }})">Delete Post</x-danger-button>
         @endif
+
+        <div class="space-y-4">
+            <h1 class="pt-4 border-t text-xl font-bold">Comments</h1>
+            <livewire:comments.create :post="$post" :key="$post->id" />
+            <livewire:comments.list :key="$post->id" />
+        </div>
     @endif
 </div>
