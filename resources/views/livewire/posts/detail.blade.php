@@ -90,7 +90,7 @@ new class extends Component {
         <div class="space-y-4">
             <h1 class="pt-4 border-t text-xl font-bold">Comments</h1>
             <livewire:comments.create :post="$post" :key="$post->id" />
-            <livewire:comments.list :key="$post->id" />
+            <livewire:comments.list :post="$post" :key="$post->id" />
         </div>
     @endif
 </div>

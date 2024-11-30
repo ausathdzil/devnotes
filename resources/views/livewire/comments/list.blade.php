@@ -1,11 +1,14 @@
 <?php
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Database\Eloquent\Collection;
-use Livewire\Attributes\On; 
+use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new class extends Component {
+    public Post $post;
+
     public Collection $comments;
 
     public function mount(): void
@@ -16,7 +19,11 @@ new class extends Component {
     #[On('comment-created')]
     public function getComments(): void
     {
-        $this->comments = Comment::with('user')->latest()->take(4)->get();
+        $this->comments = Comment::with('user')
+            ->where('post_id', $this->post->id)
+            ->latest()
+            ->take(4)
+            ->get();
     }
 
     public function delete(Comment $comment): void
@@ -40,7 +47,8 @@ new class extends Component {
                     <span class="text-accent">&bull;</span>
                     <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
                     @if ($comment->user->is(auth()->user()))
-                        <button aria-label="delete comment" class="ml-6 text-red-500" wire:click="delete({{ $comment->id }})">
+                        <button aria-label="delete comment" class="ml-6 text-red-500"
+                            wire:click="delete({{ $comment->id }})">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="size-4">
                                 <path stroke-linecap="round" stroke-linejoin="round"
