@@ -13,14 +13,20 @@ new class extends Component {
     #[Validate('required|string')]
     public string $content = '';
 
-    public function mount(Post $post): void
+    public function mount(): void
     {
-        $this->post = $post;
-        $this->title = $post->title;
-        $this->content = $post->content;
+        $this->getPost();
+
+        $this->title = $this->post->title;
+        $this->content = $this->post->content;
     }
 
-    public function update(): void
+    public function getPost(): void
+    {
+        $this->post = Post::with('user')->find(request()->route('post'));
+    }
+
+    public function update()
     {
         $this->authorize('update', $this->post);
 
@@ -29,16 +35,19 @@ new class extends Component {
         $this->post->update($validated);
 
         $this->dispatch('post-updated');
+
+        return redirect()->route('posts.show', $this->post);
     }
 
-    public function cancel(): void
+    public function cancel()
     {
         $this->dispatch('post-edit-cancelled');
+
+        return redirect()->route('posts.show', $this->post);
     }
 }; ?>
 
 <div class="w-full max-w-4xl space-y-8">
-    <h1 class="font-serif font-bold text-center text-3xl">Edit Post</h1>
     <form wire:submit.prevent="update" class="flex flex-col gap-4">
         <div class="space-y-1">
             <x-input-label for="title" :value="__('Title')" />

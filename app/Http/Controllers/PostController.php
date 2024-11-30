@@ -26,4 +26,11 @@ class PostController extends Controller
             //
         ]);
     }
+
+    public function edit(): View
+    {
+        return view('posts/edit', [
+            //
+        ]);
+    }
 }
