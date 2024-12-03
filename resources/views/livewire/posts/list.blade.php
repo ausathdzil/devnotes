@@ -2,10 +2,10 @@
 
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Volt\Component;
-use Illuminate\Support\Str;
 
 new class extends Component {
     #[Url(history: true)]

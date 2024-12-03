@@ -8,8 +8,11 @@
     <title>DevNotes</title>
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=manrope:400,500,600|merriweather:400,700" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Merriweather:wght@400;700&display=swap"
+        rel="stylesheet">
 
     <!-- Styles -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -46,8 +49,8 @@
                     </h1>
                     <p>
                         {{ __('We are here to provide space for every writer, creator, and creative thinker to express
-                                                                        themselves
-                                                                        and share inspiration with the world.') }}
+                                                                                                themselves
+                                                                                                and share inspiration with the world.') }}
                     </p>
                 </article>
                 <a class="w-fit bg-secondary text-primary px-5 py-3 rounded-lg hover:bg-secondary/95 transition-colors"

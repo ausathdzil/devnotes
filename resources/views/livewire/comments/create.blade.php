@@ -20,19 +20,29 @@ new class extends Component {
     {
         $validated = $this->validate();
 
-        auth()->user()->comments()->create([
-            'comment' => $validated['comment'],
-            'post_id' => $this->post->id,
-        ]);
+        auth()
+            ->user()
+            ->comments()
+            ->create([
+                'comment' => $validated['comment'],
+                'post_id' => $this->post->id,
+            ]);
 
         $this->comment = '';
         $this->dispatch('comment-created');
     }
 }; ?>
 
-<form class="flex flex-col gap-4 items-end" wire:submit="store">
-    <textarea class="w-full rounded-lg min-h-[50px]" wire:model="comment" placeholder="Write a comment..."></textarea>
-    <x-input-error :messages="$errors->get('comment')" />
+<div>
+    @auth
+        <form class="flex flex-col gap-4 items-end" wire:submit="store">
+            <textarea class="w-full rounded-lg min-h-[50px]" wire:model="comment" placeholder="Write a comment..."></textarea>
+            <x-input-error :messages="$errors->get('comment')" />
 
-    <x-primary-button class="w-fit">Add Comment</x-primary-button>
-</form>
+            <x-primary-button class="w-fit">Add Comment</x-primary-button>
+        </form>
+    @else
+        <p class="text-muted">Please <a href="{{ route('login') }}"
+                class="font-medium text-secondary hover:text-accent">login</a> to comment.</p>
+    @endauth
+</div>

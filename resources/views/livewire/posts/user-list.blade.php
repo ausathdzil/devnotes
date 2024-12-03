@@ -2,10 +2,10 @@
 
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Volt\Component;
-use Illuminate\Support\Facades\Auth;
 
 new class extends Component {
     #[Url(history: true)]
@@ -73,16 +73,16 @@ new class extends Component {
                     @php
                         $content = strip_tags(Str::markdown($post->content));
                         $words = str_word_count($content, 2);
-                        $snippet = implode(' ', array_slice($words, 0, 25));
+                        $snippet = implode(' ', array_slice($words, 0, 20));
                     @endphp
 
-                    @if (count($words) > 25)
+                    @if (count($snippet) > 20)
                         <p>{!! $snippet !!}...<a href="{{ route('posts.show', ['post' => $post->id]) }}"
                                 class="font-bold text-accent">{{ __('read more') }}</a></p>
                     @else
                         <p>{!! $content !!}</p>
                     @endif
-                    
+
                     <p class="text-accent">{{ $post->created_at->format('j M Y') }}</p>
                 </article>
             </li>

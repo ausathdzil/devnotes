@@ -1,9 +1,9 @@
 <?php
 
 use App\Models\Post;
+use Illuminate\Support\Str;
 use Livewire\Attributes\On;
 use Livewire\Volt\Component;
-use Illuminate\Support\Str;
 
 new class extends Component {
     public Post $post;
@@ -63,7 +63,7 @@ new class extends Component {
             </a>
         @endif
     </article>
-    <article class="prose">
+    <article class="prose font-serif">
         {!! Str::of($post->content)->markdown() !!}
     </article>
 
