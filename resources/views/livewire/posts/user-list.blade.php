@@ -76,7 +76,7 @@ new class extends Component {
                         $snippet = implode(' ', array_slice($words, 0, 20));
                     @endphp
 
-                    @if (count($snippet) > 20)
+                    @if (count($words) > 20)
                         <p>{!! $snippet !!}...<a href="{{ route('posts.show', ['post' => $post->id]) }}"
                                 class="font-bold text-accent">{{ __('read more') }}</a></p>
                     @else
