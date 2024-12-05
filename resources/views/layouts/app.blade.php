@@ -12,14 +12,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Manrope:wght@200..800&family=Merriweather:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Merriweather:wght@400;700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased text-secondary">
+<body class="font-sans antialiased text-secondary tracking-tight">
     <div class="flex flex-col min-h-screen">
         <livewire:layout.navigation />
 
@@ -35,7 +35,7 @@
             <nav>
                 <ul class="flex items-center gap-4">
                     <li>
-                        <a href="{{ route('about') }}">Help</a>
+                        <a href="{{ route('help') }}">Help</a>
                     </li>
                     <li>
                         <a href="{{ route('about') }}">About</a>

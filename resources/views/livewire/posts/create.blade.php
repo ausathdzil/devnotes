@@ -25,11 +25,11 @@ new class extends Component {
 
 <form class="flex flex-col gap-4" wire:submit="store">
     <label for="title" class="sr-only">{{ __('Title') }}</label>
-    <input class="rounded" wire:model="title" placeholder="{{ __('Title') }}" id="title" />
+    <input class="rounded-lg" wire:model="title" placeholder="{{ __('Title') }}" id="title" />
     <x-input-error :messages="$errors->get('title')" />
 
     <label for="content" class="sr-only">{{ __('Content') }}</label>
-    <textarea class="rounded min-h-[350px]" wire:model="content" placeholder="{{ __('What\'s on your mind?') }}"
+    <textarea class="rounded-lg min-h-[350px]" wire:model="content" placeholder="{{ __('What\'s on your mind?') }}"
         id="content"></textarea>
     <x-input-error :messages="$errors->get('content')" />
 

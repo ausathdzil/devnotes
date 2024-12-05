@@ -63,7 +63,7 @@ new class extends Component {
             </a>
         @endif
     </article>
-    <article class="prose font-serif">
+    <article class="prose">
         {!! Str::of($post->content)->markdown() !!}
     </article>
 

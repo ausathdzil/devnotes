@@ -28,6 +28,7 @@ export default {
             fontFamily: {
                 sans: ["Manrope", ...defaultTheme.fontFamily.sans],
                 serif: ["Merriweather", ...defaultTheme.fontFamily.serif],
+                mono: ["Roboto Mono", ...defaultTheme.fontFamily.mono],
             },
         },
     },

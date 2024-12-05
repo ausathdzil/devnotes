@@ -51,12 +51,12 @@ new class extends Component {
     <form wire:submit.prevent="update" class="flex flex-col gap-4">
         <div class="space-y-1">
             <x-input-label for="title" :value="__('Title')" />
-            <input class="rounded w-full" type="text" wire:model="title" placeholder="Post Title">
+            <input class="rounded-lg w-full" type="text" wire:model="title" placeholder="Post Title">
             <x-input-error :messages="$errors->get('title')" />
         </div>
         <div class="space-y-1">
             <x-input-label for="content" :value="__('Content')" />
-            <textarea class="min-h-[400px] rounded w-full" wire:model="content" placeholder="What's on your mind?"></textarea>
+            <textarea class="min-h-[400px] rounded-lg w-full" wire:model="content" placeholder="What's on your mind?"></textarea>
             <x-input-error :messages="$errors->get('content')" />
         </div>
         <div class="flex justify-end gap-4">

@@ -33,4 +33,7 @@ Route::view('profile/{id}', 'profile.show')
 Route::view('about', 'about')
     ->name('about');
 
+Route::view('help', 'help')
+    ->name('help');
+
 require __DIR__ . '/auth.php';

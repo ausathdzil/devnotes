@@ -19,7 +19,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans text-black antialiased">
+<body class="font-sans antialiased text-secondary tracking-tight">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
         <article class="space-y-2 text-center">
             <a href={{ route('home') }}>

@@ -18,7 +18,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased font-sans bg-primary text-secondary">
+<body class="antialiased font-sans bg-primary text-secondary tracking-tight">
     <div class="flex flex-col h-screen">
         <header class="flex items-center px-16 py-4 border-b">
             <a class="font-serif font-bold text-2xl" href="/">
@@ -61,10 +61,20 @@
             <img class="rounded-lg" src="/hero.jpg" alt="hero image" width="650px" height="400px">
         </main>
 
-        <footer class="border-t py-4">
+        <footer class="border-t px-16 py-4 flex justify-between">
             <div class="text-center text-sm">
-                &copy; {{ date('Y') }} {{ __('DevNotes') }}. {{ __('All rights reserved.') }}
+                &copy; {{ date('Y') }} DevNotes. All rights reserved.
             </div>
+            <nav>
+                <ul class="flex items-center gap-4">
+                    <li>
+                        <a href="{{ route('help') }}">Help</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('about') }}">About</a>
+                    </li>
+                </ul>
+            </nav>
         </footer>
     </div>
 </body>
