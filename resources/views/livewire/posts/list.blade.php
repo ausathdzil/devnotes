@@ -36,7 +36,7 @@ new class extends Component {
     public function calculateReadTime(Post $post): int
     {
         $wordCount = str_word_count(strip_tags(Str::markdown($post->content)));
-        return max(1, ceil($wordCount / 225)); // Minimum 1 minute
+        return max(1, ceil($wordCount / 225));
     }
 
     public function updatedSearch(): void
@@ -45,11 +45,15 @@ new class extends Component {
     }
 }; ?>
 
-<div class="w-1/2 flex flex-col items-center gap-8">
+<div class="md:w-1/2 flex flex-col items-center gap-8">
     <form wire:submit.prevent class="w-3/4">
         <input type="text" wire:model.live="search" placeholder="Search posts..."
             class="input input-bordered w-full rounded-lg">
     </form>
+
+    @if ($posts->isEmpty())
+        <div class="text-muted text-center">{{ __('No posts found.') }}</div>
+    @endif
 
     <ul class="flex flex-col items-center w-full">
         @foreach ($posts as $post)

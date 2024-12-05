@@ -39,7 +39,7 @@ new class extends Component {
     }
 }; ?>
 
-<div class="space-y-8 p-4 w-1/2">
+<div class="space-y-8 p-4 md:w-1/2">
     <article class="space-y-4 text-center">
         <h1 class="font-bold font-serif text-5xl">{{ $post->title }}</h1>
         <p>{{ $post->user->name }}</p>
