@@ -20,7 +20,7 @@ new class extends Component {
     #[On('post-created')]
     public function getPost(): void
     {
-        $this->post = Post::with('user')->find(request()->route('post'));
+        $this->post = Post::with('user')->find(request()->route('id'));
     }
 
     public function calculateReadTime(): void

@@ -59,7 +59,7 @@ new class extends Component {
         @foreach ($posts as $post)
             <li class="space-y-2 border-b p-4 w-full">
                 <article class="space-y-2 text-muted">
-                    <a href="{{ route('posts.show', ['post' => $post->id]) }}"
+                    <a href="{{ route('posts.show', ['id' => $post->id]) }}"
                         class="font-bold text-2xl text-black">{{ $post->title }}</a>
 
                     @php
@@ -69,7 +69,7 @@ new class extends Component {
                     @endphp
 
                     @if (count($words) > 25)
-                        <p>{!! $snippet !!}...<a href="{{ route('posts.show', ['post' => $post->id]) }}"
+                        <p>{!! $snippet !!}...<a href="{{ route('posts.show', ['id' => $post->id]) }}"
                                 class="font-bold text-accent">{{ __('read more') }}</a></p>
                     @else
                         <p>{!! $content !!}</p>

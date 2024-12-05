@@ -12,10 +12,10 @@ Route::view('posts/create', 'posts.create')
     ->middleware(['auth'])
     ->name('posts.create');
 
-Route::view('posts/{post}', 'posts.show')
+Route::view('posts/{id}', 'posts.show')
     ->name('posts.show');
 
-Route::view('posts/{post}/edit', 'posts.edit')
+Route::view('posts/{id}/edit', 'posts.edit')
     ->middleware(['auth'])
     ->name('posts.edit');
 
@@ -27,7 +27,7 @@ Route::view('profile/settings', 'profile.settings')
     ->middleware(['auth'])
     ->name('profile.settings');
 
-Route::view('profile/{profile}', 'profile.show')
+Route::view('profile/{id}', 'profile.show')
     ->name('profile.show');
 
 Route::view('about', 'about')
