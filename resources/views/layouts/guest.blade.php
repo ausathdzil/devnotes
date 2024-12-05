@@ -21,6 +21,14 @@
 
 <body class="font-sans text-black antialiased">
     <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
+        <article class="space-y-2 text-center">
+            <a href={{ route('home') }}>
+                <h1 class="font-serif font-bold text-4xl text-secondary">DevNotes</h1>
+            </a>
+
+            <p>{{ __('A place to share your notes and thoughts.') }}</p>
+        </article>
+
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
             {{ $slot }}
         </div>

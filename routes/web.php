@@ -5,17 +5,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
 
-Route::get('home', [PostController::class, 'index'])
+Route::view('home', 'home')
     ->name('home');
 
-Route::get('posts/create', [PostController::class, 'create'])
+Route::view('posts/create', 'posts.create')
     ->middleware(['auth'])
     ->name('posts.create');
 
-Route::get('posts/{post}', [PostController::class, 'show'])
+Route::view('posts/{post}', 'posts.show')
     ->name('posts.show');
 
-Route::get('posts/{post}/edit', [PostController::class, 'edit'])
+Route::view('posts/{post}/edit', 'posts.edit')
     ->middleware(['auth'])
     ->name('posts.edit');
 
@@ -26,5 +26,11 @@ Route::view('profile', 'profile')
 Route::view('profile/settings', 'profile.settings')
     ->middleware(['auth'])
     ->name('profile.settings');
+
+Route::view('profile/{profile}', 'profile.show')
+    ->name('profile.show');
+
+Route::view('about', 'about')
+    ->name('about');
 
 require __DIR__ . '/auth.php';

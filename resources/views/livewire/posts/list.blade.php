@@ -47,7 +47,7 @@ new class extends Component {
 
 <div class="md:w-1/2 flex flex-col items-center gap-8">
     <form wire:submit.prevent class="w-3/4">
-        <input type="text" wire:model.live="search" placeholder="Search posts..."
+        <input type="text" wire:model.live="search" placeholder="Search posts..." value="{{ $search }}"
             class="input input-bordered w-full rounded-lg">
     </form>
 

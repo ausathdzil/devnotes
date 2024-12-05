@@ -39,8 +39,8 @@ new class extends Component {
 <ul>
     @foreach ($comments as $comment)
         <li class="flex gap-4 items-center w-full">
-            <img src="{{ 'https://ui-avatars.com/api/?background=172554&color=fafafa&name=' . urlencode(Auth::user()->name) }}"
-                alt="{{ Auth::user()->name }}" class="w-14 h-14 rounded-full object-cover">
+            <img src="{{ 'https://ui-avatars.com/api/?background=172554&color=fafafa&name=' . urlencode($comment->user->name) }}"
+                alt="{{ $comment->user->name }}" class="w-14 h-14 rounded-full object-cover">
             <div class="space-y-1">
                 <div class="text-black flex items-center gap-1">
                     <span class="font-bold">{{ $comment->user->name }}</span>

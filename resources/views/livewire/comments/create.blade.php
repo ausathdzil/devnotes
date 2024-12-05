@@ -42,7 +42,7 @@ new class extends Component {
             <x-primary-button class="w-fit">Add Comment</x-primary-button>
         </form>
     @else
-        <p class="text-muted">Please <a href="{{ route('login') }}"
+        <p class="text-muted py-4">Please <a href="{{ route('login') }}"
                 class="font-medium text-secondary hover:text-accent">login</a> to comment.</p>
     @endauth
 </div>
