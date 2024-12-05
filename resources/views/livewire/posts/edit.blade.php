@@ -23,7 +23,7 @@ new class extends Component {
 
     public function getPost(): void
     {
-        $this->post = Post::with('user')->find(request()->route('post'));
+        $this->post = Post::with('user')->find(request()->route('id'));
     }
 
     public function update()
