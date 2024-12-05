@@ -75,7 +75,10 @@ new class extends Component {
                         <p>{!! $content !!}</p>
                     @endif
 
-                    <p class="text-black">{{ __('By') }} {{ $post->user->name }}</p>
+                    <p class="text-black">By
+                        <a href="{{ route('profile.show', ['id' => $post->user->id]) }}"
+                            class="text-secondary">{{ $post->user->name }}</a>
+                    </p>
                 </article>
                 <div class="flex items-center gap-2">
                     <p class="text-accent">{{ $post->created_at->format('j M Y') }}</p>

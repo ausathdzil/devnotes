@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
@@ -21,8 +22,14 @@ new class extends Component {
     #[On('posts-created')]
     public function getPosts(): void
     {
+        if (request()->route('id')) {
+            $id = request()->route('id');
+        } else {
+            $id = Auth::id();
+        }
+
         $query = Post::with('user')
-            ->where('user_id', Auth::id())
+            ->where('user_id', $id)
             ->when($this->search, function ($query) {
                 return $query->where(function ($q) {
                     $q->where('title', 'like', '%' . $this->search . '%')->orWhere('content', 'like', '%' . $this->search . '%');
@@ -36,30 +43,17 @@ new class extends Component {
     {
         $this->getPosts();
     }
+
+    public function calculateReadTime(Post $post): int
+    {
+        $wordCount = str_word_count(strip_tags(Str::markdown($post->content)));
+        return max(1, ceil($wordCount / 225));
+    }
 }; ?>
 
-<div class="flex flex-col gap-8 w-1/2">
-    <div class="bg-tertiary text-black shadow rounded-lg p-6 flex items-center space-x-8">
-        <img src="{{ 'https://ui-avatars.com/api/?background=172554&color=fafafa&name=' . urlencode(Auth::user()->name) }}"
-            alt="{{ Auth::user()->name }}" class="w-32 h-32 rounded-full object-cover">
-        <div class="flex-1">
-            <h2 class="text-2xl font-bold">{{ Auth::user()->name }}</h2>
-            <p>{{ Auth::user()->email }}</p>
-            <div class="mt-2 text-sm">
-                <p>Posts: {{ Auth::user()->posts()->count() }}</p>
-                <p>Joined: {{ Auth::user()->created_at->format('M d, Y') }}</p>
-                <a href="{{ route('profile.settings') }}"
-                    class="inline-block mt-4 bg-white text-secondary border border-secondary px-4 py-2 rounded-lg hover:bg-secondary hover:text-primary transition-colors">
-                    Edit Profile
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <h1 class="font-bold text-3xl">My Publication</h1>
-
+<div class="space-y-4">
     <form wire:submit.prevent class="w-1/2">
-        <input type="text" wire:model.live="search" placeholder="Search your posts..."
+        <input type="text" wire:model.live="search" placeholder="Search posts..."
             class="input input-bordered w-full rounded-lg">
     </form>
 
@@ -83,7 +77,11 @@ new class extends Component {
                         <p>{!! $content !!}</p>
                     @endif
 
-                    <p class="text-accent">{{ $post->created_at->format('j M Y') }}</p>
+                    <div class="flex items-center gap-2">
+                        <p class="text-accent">{{ $post->created_at->format('j M Y') }}</p>
+                        <span>&bull;</span>
+                        <p class="text-muted">{{ $this->calculateReadTime($post) }} min read</p>
+                    </div>
                 </article>
             </li>
         @endforeach

@@ -28,10 +28,20 @@
             {{ $slot }}
         </main>
 
-        <footer class="border-t py-4">
+        <footer class="border-t px-16 py-4 flex justify-between">
             <div class="text-center text-sm">
-                &copy; {{ date('Y') }} DevNotes.
+                &copy; {{ date('Y') }} DevNotes. All rights reserved.
             </div>
+            <nav>
+                <ul class="flex items-center gap-4">
+                    <li>
+                        <a href="{{ route('about') }}">Help</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('about') }}">About</a>
+                    </li>
+                </ul>
+            </nav>
         </footer>
     </div>
 </body>
