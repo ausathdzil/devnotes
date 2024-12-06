@@ -8,7 +8,7 @@
             sharing knowledgeis the first step to creating better solutions and building a strong technology community.
             Find inspiration, learn something new, or share your insights in DevNotes.</p>
 
-        <p>The website was developed by a creative team consisting of Ausath, Rakha, Ghita, Dira, and Callysta. With
+        <p>The website was developed by a creative team consisting of Rakha, Dira, Ausath, Ghita, and Callysta. With
             diverse backgrounds and expertise, we worked together to create DevNotes as a collaborative space that can
             inspire and empower the tech community. Our commitment is to deliver high-quality content and an intuitive
             and enjoyable user experience.</p>

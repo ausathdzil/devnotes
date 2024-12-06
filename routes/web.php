@@ -19,10 +19,6 @@ Route::view('posts/{id}/edit', 'posts.edit')
     ->middleware(['auth'])
     ->name('posts.edit');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
 Route::view('profile/settings', 'profile.settings')
     ->middleware(['auth'])
     ->name('profile.settings');

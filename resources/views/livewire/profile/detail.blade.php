@@ -13,11 +13,7 @@ new class extends Component {
 
     public function getUser(): void
     {
-        if (request()->route('id')) {
-            $this->user = User::findOrFail(request()->route('id'));
-        } else {
-            $this->user = auth()->user();
-        }
+        $this->user = User::find(request()->route('id'));
     }
 }; ?>
 
@@ -32,7 +28,7 @@ new class extends Component {
                 <p>Posts: {{ $user->posts()->count() }}</p>
                 <p>Joined: {{ $user->created_at->format('M d, Y') }}</p>
             </div>
-            @if (auth()->user()->id === $user->id)
+            @if (auth()->id() === $user->id)
                 <a href="{{ route('profile.settings') }}"
                     class="inline-block mt-4 bg-white text-secondary border border-secondary px-4 py-2 rounded-lg hover:bg-secondary hover:text-primary transition-colors">
                     Edit Profile
@@ -43,10 +39,10 @@ new class extends Component {
     </div>
 
     <h1 class="font-bold text-2xl">
-        @if (request()->route('id'))
-            {{ $user->name }}'s Publications
-        @else
+        @if (auth()->id() === $user->id)
             My Publications
+        @else
+            {{ $user->name }}'s Publications
         @endif
     </h1>
 </div>
