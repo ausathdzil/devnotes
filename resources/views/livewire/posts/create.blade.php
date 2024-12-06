@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Livewire\Attributes\Validate;
 use Livewire\Volt\Component;
 
@@ -10,11 +11,18 @@ new class extends Component {
     #[Validate('required|string')]
     public string $content = '';
 
+    public User $user;
+
+    public function mount(): void
+    {
+        $this->user = auth()->user();
+    }
+
     public function store(): void
     {
         $validated = $this->validate();
 
-        auth()->user()->posts()->create($validated);
+        $user->posts()->create($validated);
 
         $this->title = '';
         $this->content = '';
@@ -36,4 +44,10 @@ new class extends Component {
     <div class="flex justify-end">
         <x-primary-button class="w-fit">{{ __('Publish') }}</x-primary-button>
     </div>
+
+    @if ($user->posts()->count() === 0)
+        <p>New to writing in Markdown format? Check out
+            <a class="text-accent" href="{{ route('help') }}">this guide</a>.
+        </p>
+    @endif
 </form>

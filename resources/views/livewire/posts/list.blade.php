@@ -63,17 +63,16 @@ new class extends Component {
                         class="font-bold text-2xl text-black">{{ $post->title }}</a>
 
                     @php
-                        $content = strip_tags(Str::markdown($post->content));
-                        $words = str_word_count($content, 2);
+                        $content = Str::markdown($post->content);
+                        preg_match('/<p>(.*?)<\/p>/', $content, $matches);
+                        $firstParagraphContent = $matches[1] ?? '';
+                        $words = str_word_count(strip_tags($firstParagraphContent), 2);
                         $snippet = implode(' ', array_slice($words, 0, 25));
                     @endphp
 
-                    @if (count($words) > 25)
-                        <p>{!! $snippet !!}...<a href="{{ route('posts.show', ['id' => $post->id]) }}"
-                                class="font-bold text-accent">{{ __('read more') }}</a></p>
-                    @else
-                        <p>{!! $content !!}</p>
-                    @endif
+                    <p>{!! $snippet !!}...<a href="{{ route('posts.show', ['id' => $post->id]) }}"
+                            class="font-bold text-accent">{{ __('read more') }}</a></p>
+
 
                     <p class="text-black">By
                         <a href="{{ route('profile.show', ['id' => $post->user->id]) }}"

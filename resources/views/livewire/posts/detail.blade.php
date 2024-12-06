@@ -42,7 +42,7 @@ new class extends Component {
 <div class="space-y-8 p-4 md:w-1/2">
     <article class="space-y-4 text-center">
         <h1 class="font-bold font-serif text-5xl">{{ $post->title }}</h1>
-        <p>{{ $post->user->name }}</p>
+        <p><a href="{{ route('profile.show', ['id' => $post->user->id]) }}">{{ $post->user->name }}</a></p>
         <div class="flex items-center justify-center gap-2">
             <p class="text-accent">{{ $post->created_at->format('j M Y') }}</p>
             <span>&bull;</span>

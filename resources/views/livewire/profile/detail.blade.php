@@ -29,9 +29,10 @@ new class extends Component {
                 <p>Joined: {{ $user->created_at->format('M d, Y') }}</p>
             </div>
             @if (auth()->id() === $user->id)
-                <a href="{{ route('profile.settings') }}"
-                    class="inline-block mt-4 bg-white text-secondary border border-secondary px-4 py-2 rounded-lg hover:bg-secondary hover:text-primary transition-colors">
-                    Edit Profile
+                <a href="{{ route('profile.settings') }}">
+                    <x-secondary-button class="mt-3">
+                        {{ __('Edit Profile') }}
+                    </x-secondary-button>
                 </a>
             @endif
         </div>
