@@ -12,15 +12,5 @@
             diverse backgrounds and expertise, we worked together to create DevNotes as a collaborative space that can
             inspire and empower the tech community. Our commitment is to deliver high-quality content and an intuitive
             and enjoyable user experience.</p>
-
-        <h2>Meet the Team</h2>
-
-        <ul>
-            <li>2310512045 - Muhammad Rakha Ibnu Gunawan</li>
-            <li>2310512062 - Indira Dwi Febrian</li>
-            <li>2310512075 - Ausath Abdi Dzil Ikram</li>
-            <li>2310512078 - Ghita Cahya Ramadhanti</li>
-            <li>2310512079 - Callysta Cendikia Diba Putri</li>
-        </ul>
     </article>
 </x-app-layout>
