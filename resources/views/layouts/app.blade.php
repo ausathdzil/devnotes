@@ -33,7 +33,7 @@
                 &copy; {{ date('Y') }} DevNotes. All rights reserved.
             </div>
             <nav>
-                <ul class="flex items-center gap-4">
+                <ul class="flex items-center gap-8">
                     <li>
                         <a href="{{ route('help') }}">Help</a>
                     </li>

@@ -12,5 +12,34 @@
             diverse backgrounds and expertise, we worked together to create DevNotes as a collaborative space that can
             inspire and empower the tech community. Our commitment is to deliver high-quality content and an intuitive
             and enjoyable user experience.</p>
+
+        <div>
+            <div>
+                <img src="{{ 'https://ui-avatars.com/api/?background=172554&color=fafafa&name=Rakha' }}"
+                    alt="{{ 'Profile pic' }}" class="w-16 h-16 rounded-full object-cover">
+            </div>
+            <div>
+                <img src="{{ 'https://ui-avatars.com/api/?background=172554&color=fafafa&name=Dira' }}"
+                    alt="{{ 'Profile pic' }}" class="w-16 h-16 rounded-full object-cover">
+            </div>
+            <div class="flex items-center gap-6">
+                <img src="{{ '/profile/foto-ausath.JPG' }}" alt="{{ 'Profile pic' }}"
+                    class="w-16 h-16 rounded-full object-cover">
+
+                <div class="not-prose text-sm">
+                    <p class="text-base font-semibold">Ausath Abdi Dzil Ikram</p>
+                    <p>2310512075</p>
+                    <p>Role: Developer</p>
+                </div>
+            </div>
+            <div>
+                <img src="{{ 'https://ui-avatars.com/api/?background=172554&color=fafafa&name=Ghita' }}"
+                    alt="{{ 'Profile pic' }}" class="w-16 h-16 rounded-full object-cover">
+            </div>
+            <div>
+                <img src="{{ 'https://ui-avatars.com/api/?background=172554&color=fafafa&name=Callysta' }}"
+                    alt="{{ 'Profile pic' }}" class="w-16 h-16 rounded-full object-cover">
+            </div>
+        </div>
     </article>
 </x-app-layout>
