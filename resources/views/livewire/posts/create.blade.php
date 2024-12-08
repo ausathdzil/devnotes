@@ -22,12 +22,14 @@ new class extends Component {
     {
         $validated = $this->validate();
 
-        $user->posts()->create($validated);
+        $this->user->posts()->create($validated);
 
         $this->title = '';
         $this->content = '';
 
         $this->dispatch('post-created');
+
+        $this->redirectIntended(default: route('home', absolute: false), navigate: true);
     }
 }; ?>
 

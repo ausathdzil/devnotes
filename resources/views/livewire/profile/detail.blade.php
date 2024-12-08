@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new class extends Component {
@@ -11,6 +12,7 @@ new class extends Component {
         $this->getUser();
     }
 
+    #[On('user-updated')]
     public function getUser(): void
     {
         $this->user = User::find(request()->route('id'));
