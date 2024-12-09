@@ -17,21 +17,21 @@
             <div class="flex items-center gap-6">
                 <img src="{{ '/profile/rakha.JPG' }}" alt="{{ 'Profile pic' }}"
                     class="w-16 h-16 rounded-full object-cover">
-                
+
                 <div class="not-prose text-sm">
                     <p class="text-base font-semibold">Muhammad Rakha Ibnu Gunawan</p>
                     <p>2310512045</p>
-                    <p>Role: Developer</p>
+                    <p>Web Developer</p>
                 </div>
             </div>
             <div class="flex items-center gap-6">
-                <img src="{{ '/profile/dira.JPG' }}"
-                    alt="{{ 'Profile pic' }}" class="w-16 h-16 rounded-full object-cover">
+                <img src="{{ '/profile/dira.JPG' }}" alt="{{ 'Profile pic' }}"
+                    class="w-16 h-16 rounded-full object-cover">
 
                 <div class="not-prose text-sm">
                     <p class="text-base font-semibold">Indira Dwi Febrian</p>
                     <p>2310512062</p>
-                    <p>Role: Developer</p>
+                    <p>UI/UX Designer</p>
                 </div>
             </div>
             <div class="flex items-center gap-6">
@@ -41,27 +41,27 @@
                 <div class="not-prose text-sm">
                     <p class="text-base font-semibold">Ausath Abdi Dzil Ikram</p>
                     <p>2310512075</p>
-                    <p>Role: Developer</p>
+                    <p>Web Developer</p>
                 </div>
             </div>
             <div class="flex items-center gap-6">
-                <img src="{{ '/profile/ghita.jpg' }}"
-                    alt="{{ 'Profile pic' }}" class="w-16 h-16 rounded-full object-cover">
+                <img src="{{ '/profile/ghita.jpg' }}" alt="{{ 'Profile pic' }}"
+                    class="w-16 h-16 rounded-full object-cover">
 
                 <div class="not-prose text-sm">
                     <p class="text-base font-semibold">Ghita Cahya Ramadhanti</p>
                     <p>2310512078</p>
-                    <p>Role: Developer</p>
+                    <p>Web Developer</p>
                 </div>
             </div>
             <div class="flex items-center gap-6">
-                <img src="{{ '/profile/kia.jpg' }}"
-                    alt="{{ 'Profile pic' }}" class="w-16 h-16 rounded-full object-cover">
+                <img src="{{ '/profile/kia.jpg' }}" alt="{{ 'Profile pic' }}"
+                    class="w-16 h-16 rounded-full object-cover">
 
                 <div class="not-prose text-sm">
                     <p class="text-base font-semibold">Callysta Cendikia Diba Putri</p>
                     <p>2310512079</p>
-                    <p>Role: Developer</p>
+                    <p>UI/UX Designer</p>
                 </div>
             </div>
         </div>
